@@ -2,22 +2,16 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Enveloppe Rouge – Pay 0.1 SOL</title>
+  <title>Pay 0.1 SOL</title>
 </head>
 <body>
-  <h1>Enveloppe Rouge</h1>
-  <p>Transaction 0.1 SOL vers le bot</p>
   <button onclick="pay()">Payer 0.1 SOL</button>
-
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <script>
     async function pay() {
-      if (!window.solana) {
-        alert("Installez l’extension Phantom");
-        return;
-      }
-      const connection = new solanaWeb3.Connection("https://api.devnet.solana.com");
-      const to = new solanaWeb3.PublicKey("EA2H4YA1RvKXPQcZS54MsuV42iPQzq8mzKxWaPj4H5g8");
+      if (!window.solana) { alert('Installe Phantom'); return; }
+      const connection = new solanaWeb3.Connection('https://api.devnet.solana.com');
+      const to = new solanaWeb3.PublicKey('EA2H4YA1RvKXPQcZS54MsuV42iPQzq8mzKxWaPj4H5g8');
       const tx = new solanaWeb3.Transaction().add(
         solanaWeb3.SystemProgram.transfer({
           fromPubkey: window.solana.publicKey,
@@ -26,7 +20,7 @@
         })
       );
       await window.solana.signAndSendTransaction(tx);
-      alert("Paiement envoyé !");
+      alert('Paiement envoyé !');
     }
   </script>
 </body>
