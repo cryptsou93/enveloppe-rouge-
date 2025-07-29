@@ -3,18 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Enveloppe Rouge – Pay 0.1 SOL</title>
-  <style>
-    body { font-family: Arial, sans-serif; text-align: center; margin-top: 100px; background: #0f0f0f; color: #fff; }
-    button { padding: 18px 36px; font-size: 20px; cursor: pointer; background: #00e676; border: none; border-radius: 8px; color: #000; }
-    code { background: #222; padding: 6px 10px; border-radius: 4px; }
-  </style>
 </head>
 <body>
   <h1>Enveloppe Rouge</h1>
-  <p>Envoyez 0.1 SOL sur devnet pour jouer</p>
-  <code>EA2H4YA1RvKXPQcZS54MsuV42iPQzq8mzKxWaPj4H5g8</code>
-  <br><br>
-  <button onclick="pay()">Payer 0.1 SOL avec Phantom</button>
+  <p>Transaction 0.1 SOL vers le bot</p>
+  <button onclick="pay()">Payer 0.1 SOL</button>
 
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
   <script>
@@ -32,12 +25,8 @@
           lamports: 0.1 * 1e9
         })
       );
-      try {
-        const signature = await window.solana.signAndSendTransaction(tx);
-        alert("Paiement envoyé !\nSignature : " + signature);
-      } catch (err) {
-        alert("Erreur : " + err.message);
-      }
+      await window.solana.signAndSendTransaction(tx);
+      alert("Paiement envoyé !");
     }
   </script>
 </body>
